@@ -200,10 +200,6 @@ double Calculator::evaluateRPN ( const std::vector<std::string>& rpn ) {
             }
             double a = evalStack.top ( ); evalStack.pop ( );
 
-            // Проверка на диапазон
-            if (( token.substr ( 1 ) == "cos" || token.substr ( 1 ) == "sin" ) && ( a < -1 || a > 1 )) {
-                throw OutOfBoundsException ( "Argument for " + token.substr ( 1 ) + " must be in the range [-1, 1]: " + std::to_string ( a ) );
-            }
 
             double result = ops.applyUnary ( token.substr ( 1 ) , a );
             evalStack.push ( result );
